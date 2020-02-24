@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2019 at 09:03 AM
--- Server version: 10.1.38-MariaDB
+-- Generation Time: Dec 04, 2019 at 11:56 AM
+-- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -32,7 +32,7 @@ CREATE TABLE `admins` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_approved` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1=Approved, 0=Not Approved',
+  `is_approved` tinyint(1) NOT NULL DEFAULT 0 COMMENT '1=Approved, 0=Not Approved',
   `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone_no` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `website` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `is_approved`, `username`, `phone_no`, `website`, `email_verified_at`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'Nuray Alam Parash', 'nuray.dti@akij.net', 1, 'parash', NULL, NULL, NULL, '$2y$10$FkNT8/9h9lGijEMcexIj/.LSJhMsHgRz/3jRomF7p0w8JJ6Etwpsa', '2019-06-30 03:49:23', '2019-06-30 03:49:23'),
+(1, 'Nuray Alam', 'nuray.dti@akij.net', 1, 'parash', NULL, NULL, NULL, '$2y$10$FkNT8/9h9lGijEMcexIj/.LSJhMsHgRz/3jRomF7p0w8JJ6Etwpsa', '2019-06-30 03:49:23', '2019-06-30 03:49:23'),
 (3, 'Admin', 'admin@example.com', 1, 'admin', NULL, NULL, NULL, '$2y$10$FkNT8/9h9lGijEMcexIj/.LSJhMsHgRz/3jRomF7p0w8JJ6Etwpsa', '2019-06-30 03:49:23', '2019-06-30 03:49:23');
 
 -- --------------------------------------------------------
@@ -119,12 +119,12 @@ CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `parent_category_id` bigint(20) UNSIGNED DEFAULT NULL COMMENT 'If Null then It is a parent category',
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `icon` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_featured` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1=>featured, 0=>not featured',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=>active, 0=>inactive',
+  `is_featured` tinyint(1) NOT NULL DEFAULT 0 COMMENT '1=>featured, 0=>not featured',
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=>active, 0=>inactive',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -134,9 +134,15 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `parent_category_id`, `name`, `slug`, `image`, `icon`, `description`, `is_featured`, `status`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'Others', 'others', NULL, NULL, NULL, 1, 1, '2019-07-01 10:52:38', '2019-07-01 10:52:38'),
-(2, NULL, 'Business', 'business', NULL, NULL, NULL, 1, 1, '2019-07-01 10:52:38', '2019-07-01 10:52:38'),
-(3, NULL, 'Industry', 'industry', NULL, NULL, NULL, 1, 1, '2019-07-01 10:52:38', '2019-07-01 10:52:38');
+(5, NULL, 'Bank/Non-Bank Institution', 'fdsadsf', '1574846535.png', NULL, 'Bank/Non-Bank Fin. Institution Description', 0, 1, '2019-11-06 03:01:21', '2019-12-03 21:31:51'),
+(6, NULL, 'Engineering', 'qwqw', '1574846350.jpeg', NULL, 'Engineering  Description', 0, 1, '2019-11-06 03:03:54', '2019-12-03 21:22:56'),
+(11, NULL, 'Business Development', 'afbl', '1574845545.png', NULL, 'Business Development  Description', 0, 1, '2019-11-06 04:16:52', '2019-12-03 21:19:31'),
+(14, NULL, 'Call Center', 'apbl', '1574845035.png', NULL, 'Call Center  Description', 0, 1, '2019-11-06 04:19:51', '2019-12-03 21:18:00'),
+(15, NULL, 'Customer Support', 'food', '1574845136.jpg', NULL, 'Customer Support Description', 0, 1, '2019-11-06 04:21:14', '2019-12-03 21:17:38'),
+(18, NULL, 'Marketing & Sales', 'qqqqqqqqqqq', '1574844680.png', NULL, 'Marketing & Sales Description', 0, 1, '2019-11-06 21:37:33', '2019-12-03 21:17:17'),
+(28, NULL, 'IT & Telecommunication', 'frutika', '1574844543.png', NULL, 'IT & Telecommunication Description', 0, 1, '2019-11-10 23:58:29', '2019-12-03 21:16:50'),
+(30, NULL, 'Accounting/Finance', 'demo-employer', '1574931671.png', NULL, 'Accounting/Finance Description', 0, 1, '2019-11-28 02:59:36', '2019-12-03 21:16:36'),
+(34, NULL, 'HR/ Admin', 'rafiul-vai', '1575276543.jpg', NULL, 'HR/ Admin description', 0, 1, '2019-12-02 02:26:43', '2019-12-03 21:16:22');
 
 -- --------------------------------------------------------
 
@@ -149,9 +155,9 @@ CREATE TABLE `contacts` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `designation` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `employer_id` bigint(20) UNSIGNED NOT NULL,
-  `is_primary_contact` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1=Primary, 0=Not Primary',
+  `subject` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_primary_contact` tinyint(1) NOT NULL DEFAULT 0 COMMENT '1=Primary, 0=Not Primary',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -160,8 +166,13 @@ CREATE TABLE `contacts` (
 -- Dumping data for table `contacts`
 --
 
-INSERT INTO `contacts` (`id`, `name`, `phone`, `email`, `designation`, `employer_id`, `is_primary_contact`, `created_at`, `updated_at`) VALUES
-(13, 'Maniruzzaman', '01951233084', 'manirujjamanakash@gmail.com', 'CEO', 14, 1, '2019-07-10 23:22:43', '2019-07-10 23:22:43');
+INSERT INTO `contacts` (`id`, `name`, `phone`, `email`, `subject`, `message`, `is_primary_contact`, `created_at`, `updated_at`) VALUES
+(15, 'wewe', '23233', 'test@gm.com', '32323', '16', 1, '2019-11-15 22:20:28', '2019-11-15 22:20:28'),
+(16, '2323', '233', 'aladdinstudio@outlook.com', '2323', '17', 1, '2019-11-17 02:54:21', '2019-11-17 02:54:21'),
+(17, 'Alauddin Ahmed', '2121', 'aladdinstudio@outlook.net', 'wewe', '18', 1, '2019-11-17 03:02:54', '2019-11-17 03:02:54'),
+(59, 'its Aladdin', '2938478932', 'test2@gm.com', 'testSubject', 'dfdasf ds dfssd', 0, '2019-12-01 06:06:48', '2019-12-01 06:06:48'),
+(60, 'fdsf', '324324', 'test33@gm.com', 'test subject', 'fsdaf dsf', 0, '2019-12-01 06:07:17', '2019-12-01 06:07:17'),
+(61, 'Aladdin', '3242', 'intern23.it@akij.net', 'testSubject', 'fdds sdfa', 0, '2019-12-01 06:07:46', '2019-12-01 06:07:46');
 
 -- --------------------------------------------------------
 
@@ -195,7 +206,7 @@ CREATE TABLE `currencies` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `symbol` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `priority` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `priority` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `known_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -249,8 +260,7 @@ INSERT INTO `degree_levels` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (4, 'Higher Secondary', '2019-08-19 07:59:05', '2019-08-19 07:59:05'),
 (5, 'Diploma', '2019-08-19 07:59:05', '2019-08-19 07:59:05'),
 (6, 'Bachelor/Honors', '2019-08-19 07:59:05', '2019-08-19 07:59:05'),
-(7, 'Masters', '2019-08-19 07:59:05', '2019-08-19 07:59:05'),
-(8, 'PHD (Doctor of Phylosophy)', '2019-08-19 07:59:05', '2019-08-19 07:59:05');
+(7, 'Masters', '2019-08-19 07:59:05', '2019-08-19 07:59:05');
 
 -- --------------------------------------------------------
 
@@ -272,7 +282,12 @@ CREATE TABLE `districts` (
 --
 
 INSERT INTO `districts` (`id`, `division_id`, `name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Dhaka', NULL, '2019-07-01 10:50:06', '2019-07-01 10:50:06');
+(1, 1, 'Dhaka', NULL, '2019-07-01 10:50:06', '2019-07-01 10:50:06'),
+(2, 2, 'Jhenaidah', NULL, NULL, NULL),
+(3, 2, 'Jessore', NULL, NULL, NULL),
+(4, 2, 'Kustia', NULL, NULL, NULL),
+(5, 1, 'Manikganj', NULL, NULL, NULL),
+(6, 1, 'Gazipur', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -293,7 +308,14 @@ CREATE TABLE `divisions` (
 --
 
 INSERT INTO `divisions` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'Dhaka', NULL, '2019-07-01 10:49:48', '2019-07-01 10:49:48');
+(1, 'Dhaka', NULL, '2019-07-01 10:49:48', '2019-07-01 10:49:48'),
+(2, 'Khulna', NULL, NULL, NULL),
+(4, 'Chittagong', NULL, NULL, NULL),
+(5, 'Barisal', NULL, NULL, NULL),
+(6, 'Mymensingh', NULL, NULL, NULL),
+(7, 'Rajshahi', NULL, NULL, NULL),
+(8, '	Rangpur', NULL, NULL, NULL),
+(9, 'Sylhet', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -331,7 +353,9 @@ CREATE TABLE `employers` (
 --
 
 INSERT INTO `employers` (`id`, `name`, `name_bn`, `country_id`, `division_id`, `district_id`, `upazilla_id`, `category_id`, `email`, `api_token`, `business_description`, `business_trade_licence`, `business_rl_no`, `address`, `address_bn`, `email_verified_at`, `password`, `website`, `logo`, `remember_token`, `created_at`, `updated_at`) VALUES
-(14, 'Akij Food and Beverage Ltd', 'আকিজ ফুড এন্ড বেভারেজ', 1, 1, 1, 1, 2, 'manirujjamanakash@gmail.com', '3fa4c541510fbe23ef2b1475990997220deab5dcf8addab837bf63f8f8dd695ee135701a78fb11ce', 'আকিজ হাউজ, শহীদ তাজউদ্দীন সরণী', NULL, NULL, 'আকিজ হাউজ, শহীদ তাজউদ্দীন সরণী', 'আকিজ হাউজ, শহীদ তাজউদ্দীন সরণী', NULL, '$2y$10$HhMhMepOCIi2rmcUhcRINu9zr5HVKwUpo.lWo9M8ZBazuUT5DyxEu', NULL, '1562822563.png', NULL, '2019-07-10 23:22:43', '2019-07-17 23:42:39');
+(16, 'Akij Cement Employer', 'Akij Cement', 1, 1, 6, 10, 11, 'test@gm.com', '3c1771eeaec8d3a9ca763f2b445ab8ce941d02dd42f97a73bdd37fff832690a9174c3f4c0bb20007', 'sripur', 'sripur', '232323', 'Gazipur Sadar', 'Gazipur Sadar', NULL, '$2y$10$kbG4DuuP3LaG6vGtxdqdmuJh0wIlOZQs3dfUwZNZGwMYf1oiwRMuK', NULL, NULL, NULL, '2019-11-15 22:20:28', '2019-11-16 22:32:07'),
+(17, 'Akij Ceramic Ltd', '2323', 1, 1, 1, 1, 14, 'aladdinstudio@outlook.com', '9a32999011eaf54a13ca0a30eeff6069cc44d3a8647b0a37a0ad712306c28ae3a69ec97fee0f91cc', 'sdsd', 'sdsd', '2323', 'Demo Address', 'Demo Address', NULL, '$2y$10$MN4akcP5Ae/C14YVvQsjF.pVNg5.h4TO7QR1oJVf4MnKU.m2y1OKK', NULL, NULL, NULL, '2019-11-17 02:54:21', '2019-11-25 03:14:44'),
+(18, 'Akij Textile Ltd', 'AladdinStudio', 1, 2, 2, 9, 18, 'aladdinstudio@outlook.net', '3f2862369452290961559f2013af5a30b013b6a674d1d1b6b4446896552d859e2fa96107a03dbca6', 'Jhenaidah Business Description', NULL, NULL, 'Jhenaidah', 'Jhenaidah', NULL, '$2y$10$HgTNPfHV5P/kQuVNOk6kduJYim0q2QQ.c6oxrxbAp89yVbKOo7Dgy', NULL, NULL, NULL, '2019-11-17 03:02:54', '2019-11-25 03:15:07');
 
 -- --------------------------------------------------------
 
@@ -368,7 +392,9 @@ CREATE TABLE `employer_types` (
 --
 
 INSERT INTO `employer_types` (`id`, `employer_id`, `type_id`, `created_at`, `updated_at`) VALUES
-(13, 14, 2, '2019-07-17 23:42:39', '2019-07-17 23:42:39');
+(25, 16, 2, '2019-11-16 22:32:07', '2019-11-16 22:32:07'),
+(30, 17, 2, '2019-11-25 03:14:44', '2019-11-25 03:14:44'),
+(31, 18, 2, '2019-11-25 03:15:07', '2019-11-25 03:15:07');
 
 -- --------------------------------------------------------
 
@@ -381,7 +407,7 @@ CREATE TABLE `institutions` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=>active, 0=>inactive',
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=>active, 0=>inactive',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -407,48 +433,48 @@ CREATE TABLE `jobs` (
   `category_id` bigint(20) UNSIGNED NOT NULL,
   `employer_id` bigint(20) UNSIGNED NOT NULL,
   `deadline` date DEFAULT NULL,
-  `resume_receiving_option_online` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'Is resume can be received via online !!',
+  `resume_receiving_option_online` tinyint(1) NOT NULL DEFAULT 1 COMMENT 'Is resume can be received via online !!',
   `resume_receiving_option` tinyint(1) DEFAULT NULL COMMENT '1=>Email, 2=>Hardcopy,3=>Walk in interview',
-  `resume_receiving_option_description` tinyint(1) DEFAULT NULL,
-  `no_vacancy` tinyint(3) UNSIGNED DEFAULT '1',
-  `is_photograph_enclose` tinyint(1) NOT NULL DEFAULT '0',
-  `special_instruction` text COLLATE utf8mb4_unicode_ci,
+  `resume_receiving_option_description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_vacancy` tinyint(3) UNSIGNED DEFAULT 1,
+  `is_photograph_enclose` tinyint(1) NOT NULL DEFAULT 0,
+  `special_instruction` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `job_type_id` bigint(20) UNSIGNED DEFAULT NULL,
   `job_level_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `job_context` text COLLATE utf8mb4_unicode_ci,
-  `job_responsibility` text COLLATE utf8mb4_unicode_ci,
-  `job_location` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=>inside Bangladesh, 0=>outside Bangladesh',
+  `job_context` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `job_responsibility` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `job_location` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=>inside Bangladesh, 0=>outside Bangladesh',
   `job_location_details` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_salary_negotiable` tinyint(1) NOT NULL DEFAULT '0',
-  `min_salary` double(8,2) NOT NULL DEFAULT '0.00',
-  `max_salary` double(8,2) NOT NULL DEFAULT '0.00',
-  `salary_type` tinyint(191) DEFAULT '3' COMMENT '1=>Hourly, 2=>Daily, 3=>Monthly, 4=>Yearly',
-  `additional_salary_info` text COLLATE utf8mb4_unicode_ci,
-  `has_benefits` tinyint(1) NOT NULL DEFAULT '0',
+  `is_salary_negotiable` tinyint(1) NOT NULL DEFAULT 0,
+  `min_salary` double(8,2) NOT NULL DEFAULT 0.00,
+  `max_salary` double(8,2) NOT NULL DEFAULT 0.00,
+  `salary_type` tinyint(191) DEFAULT 3 COMMENT '1=>Hourly, 2=>Daily, 3=>Monthly, 4=>Yearly',
+  `additional_salary_info` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `has_benefits` tinyint(1) NOT NULL DEFAULT 0,
   `festival_bonus` tinyint(2) DEFAULT NULL,
-  `other_bonus` text COLLATE utf8mb4_unicode_ci,
-  `other_educational_qualification` text COLLATE utf8mb4_unicode_ci,
-  `course_info` text COLLATE utf8mb4_unicode_ci,
-  `professional_certificates` text COLLATE utf8mb4_unicode_ci,
-  `experience_required` tinyint(1) NOT NULL DEFAULT '0',
-  `experience_min_year` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
-  `experience_max_year` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
-  `is_fresher_encourage` tinyint(1) NOT NULL DEFAULT '0',
+  `other_bonus` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `other_educational_qualification` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `course_info` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `professional_certificates` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `experience_required` tinyint(1) NOT NULL DEFAULT 0,
+  `experience_min_year` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `experience_max_year` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `is_fresher_encourage` tinyint(1) NOT NULL DEFAULT 0,
   `area_experience` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `area_business` varchar(190) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `additional_skills` varchar(190) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `min_age` tinyint(3) UNSIGNED NOT NULL DEFAULT '18',
-  `max_age` tinyint(3) UNSIGNED NOT NULL DEFAULT '60',
-  `gender` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=>Male, 0=>Female, 2=>Others',
-  `is_retired_army_officer` tinyint(1) NOT NULL DEFAULT '0',
-  `company_name_show` tinyint(1) NOT NULL DEFAULT '1',
-  `company_address_show` tinyint(1) NOT NULL DEFAULT '1',
-  `company_business_show` tinyint(1) NOT NULL DEFAULT '1',
-  `is_featured` tinyint(1) NOT NULL DEFAULT '0',
-  `is_confirmed` tinyint(1) NOT NULL DEFAULT '0',
-  `total_view` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `total_search` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `status` tinyint(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '0=>Draft, 1=>Active, 2=>Deleted',
+  `min_age` tinyint(3) UNSIGNED NOT NULL DEFAULT 18,
+  `max_age` tinyint(3) UNSIGNED NOT NULL DEFAULT 60,
+  `gender` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=>Male, 0=>Female, 2=>Others',
+  `is_retired_army_officer` tinyint(1) NOT NULL DEFAULT 0,
+  `company_name_show` tinyint(1) NOT NULL DEFAULT 1,
+  `company_address_show` tinyint(1) NOT NULL DEFAULT 1,
+  `company_business_show` tinyint(1) NOT NULL DEFAULT 1,
+  `is_featured` tinyint(1) NOT NULL DEFAULT 0,
+  `is_confirmed` tinyint(1) NOT NULL DEFAULT 0,
+  `total_view` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `total_search` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `status` tinyint(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '0=>Draft, 1=>Active, 2=>Deleted',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -458,10 +484,12 @@ CREATE TABLE `jobs` (
 --
 
 INSERT INTO `jobs` (`id`, `title`, `slug`, `category_id`, `employer_id`, `deadline`, `resume_receiving_option_online`, `resume_receiving_option`, `resume_receiving_option_description`, `no_vacancy`, `is_photograph_enclose`, `special_instruction`, `job_type_id`, `job_level_id`, `job_context`, `job_responsibility`, `job_location`, `job_location_details`, `is_salary_negotiable`, `min_salary`, `max_salary`, `salary_type`, `additional_salary_info`, `has_benefits`, `festival_bonus`, `other_bonus`, `other_educational_qualification`, `course_info`, `professional_certificates`, `experience_required`, `experience_min_year`, `experience_max_year`, `is_fresher_encourage`, `area_experience`, `area_business`, `additional_skills`, `min_age`, `max_age`, `gender`, `is_retired_army_officer`, `company_name_show`, `company_address_show`, `company_business_show`, `is_featured`, `is_confirmed`, `total_view`, `total_search`, `status`, `created_at`, `updated_at`) VALUES
-(3, 'CEO Of Akij Food', 'ceo-of-akij-food', 1, 14, '2019-08-15', 1, NULL, NULL, 12, 0, '3232323', NULL, 3, 'Job Context', 'Job Responsibilities', 1, 'Dhaka', 0, 2000.00, 3000.00, 3, 'As per company policy', 1, 3, 'Another More Bonus', NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 18, 60, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, '2019-08-16 23:21:58', '2019-08-19 02:03:07'),
-(4, 'Test Product', 'test-product', 2, 14, '2019-08-21', 1, NULL, NULL, 12, 0, '121212', NULL, NULL, NULL, NULL, 1, NULL, 0, 0.00, 0.00, 3, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 18, 60, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, '2019-08-19 03:16:56', '2019-08-19 03:16:56'),
-(5, 'Test Product', 'test-product-1', 2, 14, '2019-08-30', 1, NULL, NULL, 12, 0, 'ssdsdsd', NULL, 3, 'wewewewewe', 'ersdwewewe', 1, 'Patuakhali', 0, 0.00, 0.00, 3, '2323', 0, 2, '2323', NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 18, 60, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, '2019-08-19 03:17:43', '2019-08-19 04:23:13'),
-(6, 'Test Product', 'test-product-2', 2, 14, '2019-08-31', 1, NULL, NULL, NULL, 0, '2323', NULL, NULL, NULL, NULL, 1, NULL, 0, 0.00, 0.00, 3, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 18, 60, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, '2019-08-27 23:45:25', '2019-08-27 23:45:25');
+(8, 'Software Developer PHP ( Laravel )', 'new-job', 11, 18, '2019-12-25', 0, 1, NULL, 2, 1, 'Resume Receiving Option *', NULL, 2, 'Job Context', 'Demo Job Responsibilities', 1, 'Gulshan 1', 0, 18000.00, 25000.00, 3, 'Additional Salary Info.', 0, 2, 'Others\r\n  Others', 'Other Educational Qualification', 'Vendor Certified on PHP Laravel', 'Web development course', 0, 1, 2, 1, 'Area of experience 2', 'Area of experience 2', 'Additional Requirements for development demo', 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, '2019-11-15 22:21:55', '2019-11-25 22:42:56'),
+(12, 'Front-end Developer', 'demo-job', 15, 17, '2019-12-10', 1, 2, 'Hard Copy deacription', 2, 1, 'demo job Special Instruction for Job Seekers', NULL, 1, 'Job Context', 'Demo Job Responsibilities', 1, 'Gulshan 1', 1, 0.00, 0.00, 3, 'Additional Salary Info.', 0, 3, NULL, 'Educational Qualification 2', 'Training/ Trade Course', 'Professional Certification 2', 0, 3, 8, 1, 'Area of experience2', 'Area of experience2', 'Area of experience2', 15, 50, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, '2019-11-17 20:36:35', '2019-11-28 04:18:04'),
+(13, 'Junior Executive, (For Akij Food & Beverage Ltd)', 'fdsdf', 18, 17, '2019-11-30', 1, 1, 'emaildescription@gmail.com', 50, 1, 'Special Instruction for Job Seekers 2', NULL, 3, 'Job Context', 'Demo Job Responsibilities', 1, 'Mirpur2', 1, 0.00, 0.00, 3, NULL, 0, NULL, NULL, 'Educational Qualification 30', 'Training/ Trade Course', 'Preferred Educational Institution 4', 0, 1, 7, 1, 'Area of experience 4', 'Area of experience 4', 'Area of experience 4', 21, 25, 2, 1, 1, 1, 1, 0, 0, 0, 0, 1, '2019-11-17 23:55:07', '2019-11-28 04:16:25'),
+(15, 'C# ASP.NET MVC Developer Core', 'fsd-sd-fdsfas', 30, 17, '2020-01-09', 0, 0, 'hard copy description 2', 10, 1, 'Special Instruction for Job Seekers 3', NULL, 3, 'Job Context 4', 'Job Responsibilities', 1, 'Dhanmondi 32', 1, 0.00, 0.00, 3, 'Additional Salary Info.', 0, 2, NULL, 'Preferred Educational Institution 4', 'Preferred Educational Institution 4', 'Preferred Educational Institution 4', 0, 0, 0, 0, 'Preferred Educational Institution 4', 'Preferred Educational Institution 4', 'Preferred Educational Institution 4', 19, 29, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, '2019-11-27 01:48:26', '2019-11-30 21:26:11'),
+(16, 'React Native', 'react-native', 34, 18, '2019-12-25', 1, 2, 'dfdsdd', 1, 0, NULL, NULL, 2, 'Job Context Job Context Job Context', 'Job Context Job Context', 1, 'Gulshan', 0, 20000.00, 40000.00, 3, NULL, 0, 2, NULL, 'Job Context', 'Job Context', 'Job Context', 0, 0, 0, 0, 'Job Context', 'Job Context', 'Job Context', 22, 30, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, '2019-12-02 02:29:18', '2019-12-02 02:32:09'),
+(17, 'Android Developer', 'android-develoepr', 34, 18, '2019-12-25', 1, 3, 'Walk in Interview', 2, 1, 'Walk in Interview', NULL, 2, 'Walk in Interview', 'Walk in Interview', 1, 'Gulshan 1', 0, 20000.00, 35000.00, 3, 'Walk in Interview', 0, 4, NULL, 'Walk in Interview', 'Walk in Interview Walk in Interview', 'Walk in Interview', 0, 0, 0, 0, 'Walk in Interview', 'Walk in Interview', 'Walk in Interview', 20, 30, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, '2019-12-02 02:37:41', '2019-12-02 02:41:07');
 
 -- --------------------------------------------------------
 
@@ -473,17 +501,17 @@ CREATE TABLE `job_activities` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `job_id` bigint(20) UNSIGNED NOT NULL,
-  `expected_salary` double(8,2) NOT NULL DEFAULT '0.00',
-  `is_salary_negotiable` tinyint(1) NOT NULL DEFAULT '0',
-  `cover_letter` text COLLATE utf8mb4_unicode_ci,
-  `use_profile_cv` tinyint(1) NOT NULL DEFAULT '0',
+  `expected_salary` double(8,2) NOT NULL DEFAULT 0.00,
+  `is_salary_negotiable` tinyint(1) NOT NULL DEFAULT 0,
+  `cover_letter` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `use_profile_cv` tinyint(1) NOT NULL DEFAULT 0,
   `cv` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'File Link',
-  `is_short_listed` tinyint(1) NOT NULL DEFAULT '0',
-  `is_final_listed` tinyint(1) NOT NULL DEFAULT '0',
-  `is_interviewed` tinyint(1) NOT NULL DEFAULT '0',
-  `is_emailed` tinyint(1) NOT NULL DEFAULT '0',
-  `is_viewed` tinyint(1) NOT NULL DEFAULT '0',
-  `is_starred` tinyint(1) NOT NULL DEFAULT '0'
+  `is_short_listed` tinyint(1) NOT NULL DEFAULT 0,
+  `is_final_listed` tinyint(1) NOT NULL DEFAULT 0,
+  `is_interviewed` tinyint(1) NOT NULL DEFAULT 0,
+  `is_emailed` tinyint(1) NOT NULL DEFAULT 0,
+  `is_viewed` tinyint(1) NOT NULL DEFAULT 0,
+  `is_starred` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -505,148 +533,38 @@ CREATE TABLE `job_benefits` (
 --
 
 INSERT INTO `job_benefits` (`id`, `job_id`, `benefit_id`, `created_at`, `updated_at`) VALUES
-(1, 3, 5, NULL, NULL),
-(2, 3, 12, NULL, NULL),
-(3, 3, 5, '2019-08-18 21:36:48', '2019-08-18 21:36:48'),
-(4, 3, 12, '2019-08-18 21:36:48', '2019-08-18 21:36:48'),
-(5, 3, 3, '2019-08-18 21:38:54', '2019-08-18 21:38:54'),
-(6, 3, 4, '2019-08-18 21:38:54', '2019-08-18 21:38:54'),
-(7, 3, 5, '2019-08-18 21:38:54', '2019-08-18 21:38:54'),
-(8, 3, 12, '2019-08-18 21:38:54', '2019-08-18 21:38:54'),
-(9, 3, 3, '2019-08-18 21:39:11', '2019-08-18 21:39:11'),
-(10, 3, 4, '2019-08-18 21:39:11', '2019-08-18 21:39:11'),
-(11, 3, 5, '2019-08-18 21:39:11', '2019-08-18 21:39:11'),
-(12, 3, 12, '2019-08-18 21:39:11', '2019-08-18 21:39:11'),
-(13, 3, 3, '2019-08-18 21:43:19', '2019-08-18 21:43:19'),
-(14, 3, 4, '2019-08-18 21:43:19', '2019-08-18 21:43:19'),
-(15, 3, 5, '2019-08-18 21:43:19', '2019-08-18 21:43:19'),
-(16, 3, 12, '2019-08-18 21:43:19', '2019-08-18 21:43:19'),
-(17, 3, 17, '2019-08-18 21:43:19', '2019-08-18 21:43:19'),
-(18, 3, 3, '2019-08-18 21:43:27', '2019-08-18 21:43:27'),
-(19, 3, 4, '2019-08-18 21:43:27', '2019-08-18 21:43:27'),
-(20, 3, 5, '2019-08-18 21:43:27', '2019-08-18 21:43:27'),
-(21, 3, 12, '2019-08-18 21:43:27', '2019-08-18 21:43:27'),
-(22, 3, 17, '2019-08-18 21:43:27', '2019-08-18 21:43:27'),
-(23, 3, 3, '2019-08-18 21:43:48', '2019-08-18 21:43:48'),
-(24, 3, 4, '2019-08-18 21:43:48', '2019-08-18 21:43:48'),
-(25, 3, 5, '2019-08-18 21:43:48', '2019-08-18 21:43:48'),
-(26, 3, 12, '2019-08-18 21:43:48', '2019-08-18 21:43:48'),
-(27, 3, 17, '2019-08-18 21:43:48', '2019-08-18 21:43:48'),
-(28, 3, 3, '2019-08-18 21:46:01', '2019-08-18 21:46:01'),
-(29, 3, 4, '2019-08-18 21:46:01', '2019-08-18 21:46:01'),
-(30, 3, 5, '2019-08-18 21:46:01', '2019-08-18 21:46:01'),
-(31, 3, 12, '2019-08-18 21:46:01', '2019-08-18 21:46:01'),
-(32, 3, 17, '2019-08-18 21:46:01', '2019-08-18 21:46:01'),
-(33, 3, 3, '2019-08-18 21:46:44', '2019-08-18 21:46:44'),
-(34, 3, 4, '2019-08-18 21:46:44', '2019-08-18 21:46:44'),
-(35, 3, 5, '2019-08-18 21:46:44', '2019-08-18 21:46:44'),
-(36, 3, 12, '2019-08-18 21:46:44', '2019-08-18 21:46:44'),
-(37, 3, 17, '2019-08-18 21:46:44', '2019-08-18 21:46:44'),
-(38, 3, 3, '2019-08-18 21:51:16', '2019-08-18 21:51:16'),
-(39, 3, 4, '2019-08-18 21:51:16', '2019-08-18 21:51:16'),
-(40, 3, 5, '2019-08-18 21:51:16', '2019-08-18 21:51:16'),
-(41, 3, 12, '2019-08-18 21:51:16', '2019-08-18 21:51:16'),
-(42, 3, 17, '2019-08-18 21:51:16', '2019-08-18 21:51:16'),
-(43, 3, 3, '2019-08-18 21:51:23', '2019-08-18 21:51:23'),
-(44, 3, 4, '2019-08-18 21:51:23', '2019-08-18 21:51:23'),
-(45, 3, 5, '2019-08-18 21:51:23', '2019-08-18 21:51:23'),
-(46, 3, 12, '2019-08-18 21:51:23', '2019-08-18 21:51:23'),
-(47, 3, 17, '2019-08-18 21:51:23', '2019-08-18 21:51:23'),
-(48, 3, 3, '2019-08-18 22:35:50', '2019-08-18 22:35:50'),
-(49, 3, 4, '2019-08-18 22:35:50', '2019-08-18 22:35:50'),
-(50, 3, 5, '2019-08-18 22:35:50', '2019-08-18 22:35:50'),
-(51, 3, 12, '2019-08-18 22:35:50', '2019-08-18 22:35:50'),
-(52, 3, 17, '2019-08-18 22:35:50', '2019-08-18 22:35:50'),
-(53, 3, 3, '2019-08-18 22:36:12', '2019-08-18 22:36:12'),
-(54, 3, 4, '2019-08-18 22:36:12', '2019-08-18 22:36:12'),
-(55, 3, 5, '2019-08-18 22:36:12', '2019-08-18 22:36:12'),
-(56, 3, 12, '2019-08-18 22:36:12', '2019-08-18 22:36:12'),
-(57, 3, 17, '2019-08-18 22:36:12', '2019-08-18 22:36:12'),
-(58, 3, 3, '2019-08-18 22:36:28', '2019-08-18 22:36:28'),
-(59, 3, 4, '2019-08-18 22:36:28', '2019-08-18 22:36:28'),
-(60, 3, 5, '2019-08-18 22:36:28', '2019-08-18 22:36:28'),
-(61, 3, 6, '2019-08-18 22:36:28', '2019-08-18 22:36:28'),
-(62, 3, 12, '2019-08-18 22:36:28', '2019-08-18 22:36:28'),
-(63, 3, 17, '2019-08-18 22:36:28', '2019-08-18 22:36:28'),
-(64, 3, 3, '2019-08-18 22:36:37', '2019-08-18 22:36:37'),
-(65, 3, 4, '2019-08-18 22:36:37', '2019-08-18 22:36:37'),
-(66, 3, 5, '2019-08-18 22:36:37', '2019-08-18 22:36:37'),
-(67, 3, 6, '2019-08-18 22:36:37', '2019-08-18 22:36:37'),
-(68, 3, 12, '2019-08-18 22:36:37', '2019-08-18 22:36:37'),
-(69, 3, 17, '2019-08-18 22:36:37', '2019-08-18 22:36:37'),
-(70, 3, 3, '2019-08-18 22:37:12', '2019-08-18 22:37:12'),
-(71, 3, 4, '2019-08-18 22:37:12', '2019-08-18 22:37:12'),
-(72, 3, 5, '2019-08-18 22:37:12', '2019-08-18 22:37:12'),
-(73, 3, 6, '2019-08-18 22:37:12', '2019-08-18 22:37:12'),
-(74, 3, 12, '2019-08-18 22:37:12', '2019-08-18 22:37:12'),
-(75, 3, 17, '2019-08-18 22:37:12', '2019-08-18 22:37:12'),
-(76, 3, 3, '2019-08-19 01:45:06', '2019-08-19 01:45:06'),
-(77, 3, 4, '2019-08-19 01:45:06', '2019-08-19 01:45:06'),
-(78, 3, 5, '2019-08-19 01:45:06', '2019-08-19 01:45:06'),
-(79, 3, 6, '2019-08-19 01:45:06', '2019-08-19 01:45:06'),
-(80, 3, 12, '2019-08-19 01:45:06', '2019-08-19 01:45:06'),
-(81, 3, 17, '2019-08-19 01:45:06', '2019-08-19 01:45:06'),
-(82, 3, 3, '2019-08-19 02:03:07', '2019-08-19 02:03:07'),
-(83, 3, 4, '2019-08-19 02:03:07', '2019-08-19 02:03:07'),
-(84, 3, 5, '2019-08-19 02:03:07', '2019-08-19 02:03:07'),
-(85, 3, 6, '2019-08-19 02:03:07', '2019-08-19 02:03:07'),
-(86, 3, 11, '2019-08-19 02:03:07', '2019-08-19 02:03:07'),
-(87, 3, 12, '2019-08-19 02:03:07', '2019-08-19 02:03:07'),
-(88, 3, 17, '2019-08-19 02:03:07', '2019-08-19 02:03:07'),
-(89, 3, 3, '2019-08-19 02:08:14', '2019-08-19 02:08:14'),
-(90, 3, 4, '2019-08-19 02:08:14', '2019-08-19 02:08:14'),
-(91, 3, 5, '2019-08-19 02:08:14', '2019-08-19 02:08:14'),
-(92, 3, 6, '2019-08-19 02:08:14', '2019-08-19 02:08:14'),
-(93, 3, 11, '2019-08-19 02:08:14', '2019-08-19 02:08:14'),
-(94, 3, 12, '2019-08-19 02:08:14', '2019-08-19 02:08:14'),
-(95, 3, 17, '2019-08-19 02:08:14', '2019-08-19 02:08:14'),
-(96, 3, 3, '2019-08-19 02:08:30', '2019-08-19 02:08:30'),
-(97, 3, 4, '2019-08-19 02:08:30', '2019-08-19 02:08:30'),
-(98, 3, 5, '2019-08-19 02:08:30', '2019-08-19 02:08:30'),
-(99, 3, 6, '2019-08-19 02:08:30', '2019-08-19 02:08:30'),
-(100, 3, 11, '2019-08-19 02:08:30', '2019-08-19 02:08:30'),
-(101, 3, 12, '2019-08-19 02:08:30', '2019-08-19 02:08:30'),
-(102, 3, 17, '2019-08-19 02:08:30', '2019-08-19 02:08:30'),
-(103, 5, 2, '2019-08-19 03:19:45', '2019-08-19 03:19:45'),
-(104, 5, 6, '2019-08-19 03:19:45', '2019-08-19 03:19:45'),
-(105, 5, 7, '2019-08-19 03:19:45', '2019-08-19 03:19:45'),
-(106, 5, 10, '2019-08-19 03:19:45', '2019-08-19 03:19:45'),
-(107, 5, 14, '2019-08-19 03:19:45', '2019-08-19 03:19:45'),
-(108, 5, 2, '2019-08-19 04:21:38', '2019-08-19 04:21:38'),
-(109, 5, 6, '2019-08-19 04:21:38', '2019-08-19 04:21:38'),
-(110, 5, 7, '2019-08-19 04:21:38', '2019-08-19 04:21:38'),
-(111, 5, 10, '2019-08-19 04:21:38', '2019-08-19 04:21:38'),
-(112, 5, 14, '2019-08-19 04:21:38', '2019-08-19 04:21:38'),
-(113, 5, 2, '2019-08-19 04:21:55', '2019-08-19 04:21:55'),
-(114, 5, 6, '2019-08-19 04:21:55', '2019-08-19 04:21:55'),
-(115, 5, 7, '2019-08-19 04:21:55', '2019-08-19 04:21:55'),
-(116, 5, 10, '2019-08-19 04:21:55', '2019-08-19 04:21:55'),
-(117, 5, 14, '2019-08-19 04:21:55', '2019-08-19 04:21:55'),
-(118, 5, 2, '2019-08-19 04:22:17', '2019-08-19 04:22:17'),
-(119, 5, 6, '2019-08-19 04:22:17', '2019-08-19 04:22:17'),
-(120, 5, 7, '2019-08-19 04:22:17', '2019-08-19 04:22:17'),
-(121, 5, 10, '2019-08-19 04:22:17', '2019-08-19 04:22:17'),
-(122, 5, 14, '2019-08-19 04:22:17', '2019-08-19 04:22:17'),
-(123, 5, 2, '2019-08-19 04:22:24', '2019-08-19 04:22:24'),
-(124, 5, 6, '2019-08-19 04:22:24', '2019-08-19 04:22:24'),
-(125, 5, 7, '2019-08-19 04:22:24', '2019-08-19 04:22:24'),
-(126, 5, 10, '2019-08-19 04:22:24', '2019-08-19 04:22:24'),
-(127, 5, 14, '2019-08-19 04:22:24', '2019-08-19 04:22:24'),
-(128, 5, 2, '2019-08-19 04:22:32', '2019-08-19 04:22:32'),
-(129, 5, 6, '2019-08-19 04:22:32', '2019-08-19 04:22:32'),
-(130, 5, 7, '2019-08-19 04:22:32', '2019-08-19 04:22:32'),
-(131, 5, 10, '2019-08-19 04:22:32', '2019-08-19 04:22:32'),
-(132, 5, 14, '2019-08-19 04:22:32', '2019-08-19 04:22:32'),
-(133, 5, 2, '2019-08-19 04:22:43', '2019-08-19 04:22:43'),
-(134, 5, 6, '2019-08-19 04:22:43', '2019-08-19 04:22:43'),
-(135, 5, 7, '2019-08-19 04:22:43', '2019-08-19 04:22:43'),
-(136, 5, 10, '2019-08-19 04:22:43', '2019-08-19 04:22:43'),
-(137, 5, 14, '2019-08-19 04:22:43', '2019-08-19 04:22:43'),
-(138, 5, 2, '2019-08-19 04:23:13', '2019-08-19 04:23:13'),
-(139, 5, 6, '2019-08-19 04:23:13', '2019-08-19 04:23:13'),
-(140, 5, 7, '2019-08-19 04:23:13', '2019-08-19 04:23:13'),
-(141, 5, 10, '2019-08-19 04:23:13', '2019-08-19 04:23:13'),
-(142, 5, 14, '2019-08-19 04:23:13', '2019-08-19 04:23:13');
+(144, 12, 2, '2019-11-17 20:37:57', '2019-11-17 20:37:57'),
+(145, 12, 6, '2019-11-17 20:37:57', '2019-11-17 20:37:57'),
+(146, 12, 11, '2019-11-17 20:37:57', '2019-11-17 20:37:57'),
+(147, 12, 12, '2019-11-17 20:37:57', '2019-11-17 20:37:57'),
+(148, 12, 17, '2019-11-17 20:37:57', '2019-11-17 20:37:57'),
+(176, 8, 1, '2019-11-25 20:42:19', '2019-11-25 20:42:19'),
+(177, 8, 2, '2019-11-25 20:42:19', '2019-11-25 20:42:19'),
+(178, 8, 3, '2019-11-25 20:42:19', '2019-11-25 20:42:19'),
+(179, 8, 4, '2019-11-25 20:42:19', '2019-11-25 20:42:19'),
+(180, 8, 6, '2019-11-25 20:42:19', '2019-11-25 20:42:19'),
+(181, 8, 17, '2019-11-25 20:42:19', '2019-11-25 20:42:19'),
+(182, 15, 2, '2019-11-27 03:47:53', '2019-11-27 03:47:53'),
+(183, 15, 3, '2019-11-27 03:47:53', '2019-11-27 03:47:53'),
+(184, 15, 11, '2019-11-27 03:47:53', '2019-11-27 03:47:53'),
+(185, 15, 14, '2019-11-27 03:47:53', '2019-11-27 03:47:53'),
+(186, 15, 17, '2019-11-27 03:47:53', '2019-11-27 03:47:53'),
+(187, 15, 2, '2019-11-27 05:46:18', '2019-11-27 05:46:18'),
+(188, 15, 3, '2019-11-27 05:46:18', '2019-11-27 05:46:18'),
+(189, 15, 11, '2019-11-27 05:46:18', '2019-11-27 05:46:18'),
+(190, 15, 14, '2019-11-27 05:46:18', '2019-11-27 05:46:18'),
+(191, 15, 17, '2019-11-27 05:46:18', '2019-11-27 05:46:18'),
+(192, 15, 2, '2019-11-30 21:24:54', '2019-11-30 21:24:54'),
+(193, 15, 3, '2019-11-30 21:24:54', '2019-11-30 21:24:54'),
+(194, 15, 4, '2019-11-30 21:24:54', '2019-11-30 21:24:54'),
+(195, 15, 11, '2019-11-30 21:24:54', '2019-11-30 21:24:54'),
+(196, 15, 14, '2019-11-30 21:24:54', '2019-11-30 21:24:54'),
+(197, 15, 17, '2019-11-30 21:24:54', '2019-11-30 21:24:54'),
+(198, 16, 2, '2019-12-02 02:30:30', '2019-12-02 02:30:30'),
+(199, 16, 3, '2019-12-02 02:30:30', '2019-12-02 02:30:30'),
+(200, 16, 16, '2019-12-02 02:30:30', '2019-12-02 02:30:30'),
+(201, 17, 14, '2019-12-02 02:38:23', '2019-12-02 02:38:23'),
+(202, 17, 16, '2019-12-02 02:38:23', '2019-12-02 02:38:23');
 
 -- --------------------------------------------------------
 
@@ -661,6 +579,14 @@ CREATE TABLE `job_employment_statuses` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `job_employment_statuses`
+--
+
+INSERT INTO `job_employment_statuses` (`id`, `job_id`, `job_status_id`, `created_at`, `updated_at`) VALUES
+(1, 12, 11, '2019-11-28 12:07:45', '2019-11-28 12:07:45'),
+(2, 8, 10, '2019-11-27 18:00:00', '2019-11-28 12:08:09');
 
 -- --------------------------------------------------------
 
@@ -690,6 +616,31 @@ CREATE TABLE `job_institutions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `job_institutions`
+--
+
+INSERT INTO `job_institutions` (`id`, `job_id`, `institution_id`, `created_at`, `updated_at`) VALUES
+(3, 13, 1, '2019-11-18 04:33:58', '2019-11-18 04:33:58'),
+(6, 8, 1, '2019-11-25 20:58:22', '2019-11-25 20:58:22'),
+(11, 8, 2, '2019-11-25 21:46:12', '2019-11-25 21:46:12'),
+(12, 15, 1, '2019-11-27 03:48:39', '2019-11-27 03:48:39'),
+(13, 15, 1, '2019-11-27 03:51:50', '2019-11-27 03:51:50'),
+(14, 15, 2, '2019-11-27 05:17:25', '2019-11-27 05:17:25'),
+(15, 13, 2, '2019-11-27 05:19:05', '2019-11-27 05:19:05'),
+(16, 13, 1, '2019-11-27 05:22:30', '2019-11-27 05:22:30'),
+(17, 13, 1, '2019-11-27 05:29:54', '2019-11-27 05:29:54'),
+(18, 13, 1, '2019-11-27 05:32:38', '2019-11-27 05:32:38'),
+(19, 15, 1, '2019-11-27 05:43:54', '2019-11-27 05:43:54'),
+(20, 15, 1, '2019-11-27 21:28:23', '2019-11-27 21:28:23'),
+(21, 15, 1, '2019-11-27 21:29:31', '2019-11-27 21:29:31'),
+(22, 15, 2, '2019-11-27 21:31:18', '2019-11-27 21:31:18'),
+(23, 15, 1, '2019-11-27 21:31:54', '2019-11-27 21:31:54'),
+(24, 15, 1, '2019-11-27 21:34:25', '2019-11-27 21:34:25'),
+(25, 15, 1, '2019-11-30 21:26:11', '2019-11-30 21:26:11'),
+(26, 16, 2, '2019-12-02 02:31:44', '2019-12-02 02:31:44'),
+(27, 17, 1, '2019-12-02 02:39:07', '2019-12-02 02:39:07');
+
 -- --------------------------------------------------------
 
 --
@@ -701,7 +652,7 @@ CREATE TABLE `job_levels` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `color` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=>active, 0=>inactive',
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=>active, 0=>inactive',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -745,6 +696,14 @@ CREATE TABLE `job_qualifications` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `job_qualifications`
+--
+
+INSERT INTO `job_qualifications` (`id`, `job_id`, `degree_level_id`, `degree_id`, `major_subject`, `created_at`, `updated_at`) VALUES
+(1, 15, 1, 1, 'Bangla', '2019-11-28 03:16:25', '2019-11-28 03:16:25'),
+(2, 15, 2, 3, 'Science', '2019-11-28 03:16:55', '2019-11-28 03:16:55');
+
 -- --------------------------------------------------------
 
 --
@@ -778,10 +737,12 @@ CREATE TABLE `job_statuses` (
 --
 
 INSERT INTO `job_statuses` (`id`, `job_id`, `status_id`, `created_at`, `updated_at`) VALUES
-(1, 3, 1, '2019-08-16 23:21:58', '2019-08-16 23:21:58'),
-(2, 4, 1, '2019-08-19 03:16:56', '2019-08-19 03:16:56'),
-(3, 5, 1, '2019-08-19 03:17:43', '2019-08-19 03:17:43'),
-(4, 6, 1, '2019-08-27 23:45:25', '2019-08-27 23:45:25');
+(6, 8, 1, '2019-11-15 22:21:55', '2019-11-15 22:21:55'),
+(10, 12, 1, '2019-11-17 20:36:35', '2019-11-17 20:36:35'),
+(11, 13, 1, '2019-11-17 23:55:07', '2019-11-17 23:55:07'),
+(15, 15, 2, '2019-11-27 01:48:26', '2019-11-27 01:48:26'),
+(16, 16, 1, '2019-12-02 02:29:18', '2019-12-02 02:29:18'),
+(17, 17, 1, '2019-12-02 02:37:41', '2019-12-02 02:37:41');
 
 -- --------------------------------------------------------
 
@@ -794,7 +755,7 @@ CREATE TABLE `job_types` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `color` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=>active, 0=>inactive',
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=>active, 0=>inactive',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -808,7 +769,7 @@ CREATE TABLE `job_types` (
 CREATE TABLE `locations` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `inside_bangladesh` tinyint(1) NOT NULL DEFAULT '1',
+  `inside_bangladesh` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -872,7 +833,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (80, '2019_06_27_055725_create_statuses_table', 5),
 (81, '2019_06_27_081325_create_job_statuses_table', 6),
 (82, '2019_08_17_060828_create_job_benefits_table', 7),
-(83, '2019_08_19_090944_create_job_institutions_table', 8);
+(83, '2019_08_19_090944_create_job_institutions_table', 8),
+(86, '2019_11_06_052059_create_second_categories_table', 9);
 
 -- --------------------------------------------------------
 
@@ -924,7 +886,7 @@ CREATE TABLE `pages` (
   `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1026,6 +988,30 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `second_categories`
+--
+
+CREATE TABLE `second_categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parent_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `second_categories`
+--
+
+INSERT INTO `second_categories` (`id`, `name`, `slug`, `image`, `parent_id`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'asas', 'asas', NULL, NULL, 'asas', '2019-11-06 02:24:01', '2019-11-06 02:24:01');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `settings`
 --
 
@@ -1041,7 +1027,7 @@ CREATE TABLE `settings` (
   `contact_email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `contact_address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `open_close` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `footer_text` text COLLATE utf8mb4_unicode_ci,
+  `footer_text` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1057,10 +1043,24 @@ CREATE TABLE `skills` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=>active, 0=>inactive',
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=>active, 0=>inactive',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `skills`
+--
+
+INSERT INTO `skills` (`id`, `name`, `slug`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(4, ' Administrative Officer', '', NULL, 1, NULL, NULL),
+(14, ' IT Specialist', ' IT-Specialist', NULL, 1, NULL, NULL),
+(15, 'Java Developer', 'Java- Developer', NULL, 1, NULL, NULL),
+(16, 'Full Stack Developer', 'Full-Stack-Developer', NULL, 1, NULL, NULL),
+(17, ' HR, Executive', ' HR-Executive', NULL, 1, NULL, NULL),
+(18, 'Machine operator', 'Machine-operator', NULL, 1, NULL, NULL),
+(21, ' Adobe AEM Forms Senior Develop', ' Adobe-AEM-Forms-Senior-Develop', NULL, 1, NULL, NULL),
+(22, ' SAP Emerging Technologies Arch', ' SAP-Emerging-Technologies-Arch', NULL, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1095,7 +1095,7 @@ INSERT INTO `statuses` (`id`, `name`, `created_at`, `updated_at`) VALUES
 CREATE TABLE `subscribers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=>Active to receive notification, 0=> Not active to receive notification',
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=>Active to receive notification, 0=> Not active to receive notification',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1141,7 +1141,11 @@ CREATE TABLE `upazillas` (
 --
 
 INSERT INTO `upazillas` (`id`, `district_id`, `name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Dhaka', NULL, '2019-07-01 10:50:27', '2019-07-01 10:50:27');
+(1, 1, 'Dhaka', NULL, '2019-07-01 10:50:27', '2019-07-01 10:50:27'),
+(8, 2, 'Maheshpur ', NULL, NULL, NULL),
+(9, 2, 'Shailkupa', NULL, NULL, NULL),
+(10, 6, 'Gazipur Sadar', NULL, NULL, NULL),
+(11, 6, 'Sripur', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1155,19 +1159,35 @@ CREATE TABLE `users` (
   `last_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `api_token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone_no` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` int(10) NOT NULL COMMENT '0=>Female,1=>Male',
+  `api_token` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_no` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `website` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
   `job_level_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` bigint(20) UNSIGNED DEFAULT NULL,
   `cv` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Job Seeker CV file',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `username`, `gender`, `api_token`, `phone_no`, `website`, `email_verified_at`, `password`, `date_of_birth`, `job_level_id`, `category_id`, `cv`, `remember_token`, `created_at`, `updated_at`) VALUES
+(2, 'Raful', 'Vai', 'AkaashVai@yahoo.com', 'FaridVai', 1, NULL, NULL, NULL, NULL, '$2y$10$7Mo1VoNDFo4QMZsFhHSjue3O7etNPtpnu0VxCP9pdQGFzgKCRCODm', NULL, NULL, NULL, NULL, NULL, '2019-12-03 02:21:08', '2019-12-03 02:21:08'),
+(4, 'aladddin', 'aladdin', 'aladddin@gmail.com', 'aladddin', 1, NULL, NULL, NULL, NULL, '$2y$10$s0DpnvB4a7NoCs4Tr3vBrOeiqh3CiNzs06hw3nT5LVyUPuRTYBjh6', NULL, NULL, NULL, NULL, NULL, '2019-12-03 04:15:55', '2019-12-03 04:15:55'),
+(5, 'dsfa', 'fasdf', 'intern22.it@akij.net', 'fdsaf', 1, NULL, NULL, NULL, NULL, '$2y$10$SV.s3NUcG859uQTugC/9V.Rqw5ALwVFw9QfIHz1S7tvJuwXV19E.C', NULL, NULL, NULL, NULL, NULL, '2019-12-03 04:18:03', '2019-12-03 04:18:03'),
+(6, 'dddf', 'dfasd', 'test@gm.com', 'alauddinahmed', 1, NULL, NULL, NULL, NULL, '$2y$10$HYqU4LfLPAC9RCNDUsN8l.nYYl6rj9GAEy5lwY33lj0u5T.6dTmfm', NULL, NULL, NULL, NULL, NULL, '2019-12-03 04:21:18', '2019-12-03 04:21:18'),
+(7, 'fdfdsf', 'dfasd', 'intern12.it@akij.net', 'alauddinahmeddsd', 1, NULL, NULL, NULL, NULL, '$2y$10$x532kl/MHEmo36T.9/cRu.AuflVjLqsNA9a4pxmx4Gx57bF6wFuEG', NULL, NULL, NULL, NULL, NULL, '2019-12-03 04:51:01', '2019-12-03 04:51:01'),
+(9, 'fadsf', 'fasdfdsf', 'intern223432.it@akij.net', 'dfsafasdfwer', 0, NULL, NULL, NULL, NULL, '$2y$10$0ZZUS1Ch6KmzsLxZ9EjoIORaZNgViawg4G/Y9jM4.3bsub/QVxY3a', NULL, NULL, NULL, NULL, NULL, '2019-12-03 04:52:14', '2019-12-03 04:52:14'),
+(11, 'alauddin', 'ahmed', 'alauddin1234@gmail.com', 'alauddinahmed2', 1, NULL, NULL, NULL, NULL, '$2y$10$BMCdDanpExwvPILhb/rf3.amM1Oi/BC6bBVwYuHjtCbGP4nP4VDra', NULL, NULL, NULL, NULL, NULL, '2019-12-03 04:59:34', '2019-12-03 04:59:34'),
+(22, 'aladdin2', 'ahmed', 'aladdin2@gmail.com', 'aladdin2', 0, NULL, NULL, NULL, NULL, '$2y$10$FVewHLItsIFNnz.dyf/ON.mma3UpRUfyYBeqAN77BYU0ok9mnwbci', NULL, NULL, NULL, NULL, NULL, '2019-12-04 02:58:37', '2019-12-04 02:58:37'),
+(23, 'fds', 'dfsfa', 'test3e42@gm.com', 'fsdfa', 1, NULL, NULL, NULL, NULL, '$2y$10$FTCUpT3kRd5XxQO6ySt3E..IRPuqR7Cwpkrp3r1LpvZFrY69z2yJ6', NULL, NULL, NULL, NULL, NULL, '2019-12-04 04:00:18', '2019-12-04 04:00:18');
 
 -- --------------------------------------------------------
 
@@ -1181,7 +1201,7 @@ CREATE TABLE `user_awards` (
   `award_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` date NOT NULL,
   `company_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1195,7 +1215,7 @@ CREATE TABLE `user_awards` (
 CREATE TABLE `user_experiences` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
-  `is_current_job` tinyint(1) NOT NULL DEFAULT '1',
+  `is_current_job` tinyint(1) NOT NULL DEFAULT 1,
   `start_date` date NOT NULL,
   `end_date` date DEFAULT NULL,
   `job_title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1203,7 +1223,7 @@ CREATE TABLE `user_experiences` (
   `job_location_city` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `job_location_state` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `job_location_country` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1221,8 +1241,8 @@ CREATE TABLE `user_portfolios` (
   `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `file` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `link` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `priority` tinyint(3) UNSIGNED NOT NULL DEFAULT '1',
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `priority` tinyint(3) UNSIGNED NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1245,8 +1265,8 @@ CREATE TABLE `user_qualifications` (
   `percentage` tinyint(3) UNSIGNED DEFAULT NULL,
   `get_cgpa` double(8,2) DEFAULT NULL,
   `on_cgpa` double(8,2) DEFAULT NULL COMMENT 'The CGPA count in what ? or (out of ?)',
-  `is_current_qualification` tinyint(1) NOT NULL DEFAULT '0',
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `is_current_qualification` tinyint(1) NOT NULL DEFAULT 0,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1261,7 +1281,7 @@ CREATE TABLE `user_skills` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `skill_id` bigint(20) UNSIGNED NOT NULL,
-  `percentage` int(10) UNSIGNED NOT NULL DEFAULT '50',
+  `percentage` int(10) UNSIGNED NOT NULL DEFAULT 50,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1302,8 +1322,7 @@ ALTER TABLE `categories`
 -- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `contacts_employer_id_foreign` (`employer_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `countries`
@@ -1532,6 +1551,12 @@ ALTER TABLE `role_has_permissions`
   ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
+-- Indexes for table `second_categories`
+--
+ALTER TABLE `second_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
@@ -1576,8 +1601,8 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`),
   ADD UNIQUE KEY `users_username_unique` (`username`),
-  ADD UNIQUE KEY `users_api_token_unique` (`api_token`),
   ADD UNIQUE KEY `users_phone_no_unique` (`phone_no`),
+  ADD UNIQUE KEY `users_api_token_unique` (`api_token`),
   ADD KEY `users_job_level_id_foreign` (`job_level_id`),
   ADD KEY `users_category_id_foreign` (`category_id`);
 
@@ -1645,13 +1670,13 @@ ALTER TABLE `benefit_types`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -1669,31 +1694,31 @@ ALTER TABLE `currencies`
 -- AUTO_INCREMENT for table `degrees`
 --
 ALTER TABLE `degrees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `degree_levels`
 --
 ALTER TABLE `degree_levels`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `districts`
 --
 ALTER TABLE `districts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `divisions`
 --
 ALTER TABLE `divisions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `employers`
 --
 ALTER TABLE `employers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `employer_billing_addresses`
@@ -1705,7 +1730,7 @@ ALTER TABLE `employer_billing_addresses`
 -- AUTO_INCREMENT for table `employer_types`
 --
 ALTER TABLE `employer_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `institutions`
@@ -1717,7 +1742,7 @@ ALTER TABLE `institutions`
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `job_activities`
@@ -1729,13 +1754,13 @@ ALTER TABLE `job_activities`
 -- AUTO_INCREMENT for table `job_benefits`
 --
 ALTER TABLE `job_benefits`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 
 --
 -- AUTO_INCREMENT for table `job_employment_statuses`
 --
 ALTER TABLE `job_employment_statuses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `job_favorites`
@@ -1747,7 +1772,7 @@ ALTER TABLE `job_favorites`
 -- AUTO_INCREMENT for table `job_institutions`
 --
 ALTER TABLE `job_institutions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `job_levels`
@@ -1765,7 +1790,7 @@ ALTER TABLE `job_locations`
 -- AUTO_INCREMENT for table `job_qualifications`
 --
 ALTER TABLE `job_qualifications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `job_skills`
@@ -1777,7 +1802,7 @@ ALTER TABLE `job_skills`
 -- AUTO_INCREMENT for table `job_statuses`
 --
 ALTER TABLE `job_statuses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `job_types`
@@ -1795,7 +1820,7 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -1816,6 +1841,12 @@ ALTER TABLE `roles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `second_categories`
+--
+ALTER TABLE `second_categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `settings`
 --
 ALTER TABLE `settings`
@@ -1825,7 +1856,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `statuses`
@@ -1849,13 +1880,13 @@ ALTER TABLE `types`
 -- AUTO_INCREMENT for table `upazillas`
 --
 ALTER TABLE `upazillas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `user_awards`
@@ -1902,12 +1933,6 @@ ALTER TABLE `benefits`
 --
 ALTER TABLE `categories`
   ADD CONSTRAINT `categories_parent_category_id_foreign` FOREIGN KEY (`parent_category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `contacts`
---
-ALTER TABLE `contacts`
-  ADD CONSTRAINT `contacts_employer_id_foreign` FOREIGN KEY (`employer_id`) REFERENCES `employers` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `degrees`
