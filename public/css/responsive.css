@@ -1,0 +1,784 @@
+
+@media (max-width: 1200px) {
+	
+	.btn-send {
+		width: 115px; 
+	} 
+
+	.logo-here h2 {
+		font-size: 12px;
+		font-weight: 700;
+		line-height: 52px;
+		width: 66%;
+		float: right;
+	} 
+
+	.single-catagory-list li a {
+		text-decoration: none;
+		color: #242424;
+		list-style: none;
+		font-size: 10px;
+		line-height: 35px;
+		font-weight: 500;
+		color: #242424;
+		transition: all ease 500ms;
+	} 
+
+	.companies-detail h3 {
+		font-size: 16px;
+		font-weight: 600;
+	} 
+
+	.quick-icon ul li a {
+		font-size: 12px;
+	} 
+
+
+}
+
+
+/* Medium Devices, Desktops */
+@media (max-width: 1024px) {
+
+
+	.accordion-header {
+
+		padding: 10px 10px;
+	} 
+
+	.col-xl-5.mypaddings {
+		padding-left: 10px;
+	}
+
+}
+
+
+@media (min-width: 992px){
+	.modal-lg {
+		max-width: 800px!important;
+	}
+
+}
+
+
+/* Small Devices, Tablets */
+@media (min-width : 768px) and (max-width: 991px) {
+
+
+	.left-side {
+		width: 20%;
+		float: left;
+		padding-top: 8px;
+	} 
+	.logo-here {
+		width: 200px;
+		margin: 0 auto;
+		margin-bottom: 40px;
+	}
+	.here-icon {
+		width: 35px;
+		float: left;
+		border: 2px solid #e7eaec;
+		height: 35px;
+		text-align: center;
+		line-height: 35px;
+		color: #12649c;
+	}
+
+	.menu li a {
+		color: #fff;
+		text-decoration: none;
+		line-height: 50px;
+		margin-right: 12px;
+		display: block;
+		transition: all ease 500ms;
+	}
+
+	.social-link i { 
+		margin-right: 1px;
+
+	}
+
+	.job-details h2 {
+		width: 100%;
+		font-size: 16px;
+		font-weight: 600;
+	}
+
+	.catagory-list-area {
+		width: 50%;
+		float: left;
+		padding: 10px 20px;
+	}
+	.single-catagory-list li a { 
+		font-size: 14px;
+
+	}
+	.skill-img {
+		margin-bottom: 50px;
+	}
+
+
+	.job-banner h2 {
+		font-weight: 600;
+		padding-top: 30px;
+		padding-left: 10px;
+		font-size: 26px;
+		line-height: 50px;
+	}
+
+	.btn-applys {
+		margin-top: 20px;
+	} 
+
+	.download-our-apps-details {
+		text-align: center;
+	} 
+
+	.apps {
+
+		display: inline-block;
+	} 
+
+	.navbar-collapse {
+	    background: #2e6abf;
+	    z-index: 1000;
+	    text-align: center;
+	}
+
+	.col-xl-5.mypaddings {
+		padding-left: 10px;
+	}
+
+	.btn-send {
+		margin-right: 10px;
+		height: 30px;
+		margin-bottom: 2px!important;
+	}
+	#contact-area img{
+		width: 100%;
+	}
+	.login-dropdown-menu {
+		min-width: 16rem;
+		margin-left: -135px;
+	}
+	.signup-dropdown-menu {
+		min-width: 16rem;
+		margin-left: -135px;
+	}
+}
+
+/* Small Devices Potrait */
+@media (max-width : 767px){ 
+	.left-side {
+		width: 50%;
+		float: left;
+		padding-top: 8px;
+	}
+	.btn-login {
+	    margin-bottom: 3px;
+	    margin-top: -28px!important;
+	    display: block;
+	}
+	.address-box {
+		width: 100%;
+		float: left;
+		padding-top: 22px;
+		/* display: none; */
+		margin-top: -50px;
+		margin-left: -20px;
+	}
+
+	.logo-here {
+		width: 170px;
+		margin: 0 auto;
+		float: left;
+	}
+	.icon-detail h3 {
+		font-size: 12px;
+		margin-bottom: 20px;
+	}
+	.login-area {
+		padding-top: 20px;
+		display: inline-block;
+		width: 300px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	#menu {
+		display: none;
+	}
+	.hero-banner-box h2 {
+		line-height: 30px;
+		font-size: 18px;
+	}
+
+	.hero-banner-box h1 {
+		font-size: 22px;
+		padding-top: 5px;
+	}
+	.search-area input {
+		margin: 0 0;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.search-area {
+		padding: 30px 0;
+	}
+
+	.company-logo {
+		width: 40px;
+		float: unset;
+		margin: 0 auto;
+		margin-bottom: 20px;
+	}
+	.job-details {
+		width: 100%;
+		float: right;
+	}
+	.job-details h2 {
+		width: 100%;
+		font-size: 16px;
+		font-weight: 600;
+	}
+
+	.catagory-list-area {
+		width: 100%;
+		float: left;
+		padding: 0 20px;
+	}
+
+	.single-catagory-list li a {
+		font-size: 12px;
+	}
+
+	.skill-img {
+		margin-bottom: 30px;
+	}
+
+	.skills .catagory-list-area {
+		width: 100%;
+		float: left;
+		padding: 0 10px;
+	}
+
+	.job-banner h2 {
+		font-weight: 600;
+		padding: 0;
+		font-size: 20px;
+		text-align: center;
+		padding-top: 20px;
+	}
+
+	.job-banner p {
+		padding-left: 0;
+		text-align: center;
+		padding:3px 0;
+	}
+
+	.btn-applys {
+		background: #fff;
+		border: 0px;
+		border-radius: 5px;
+		line-height: 35px;
+		padding: 0 10px;
+		float: unset;
+		color: #1b75b4;
+		font-weight: 600;
+		margin-right: 0;
+		cursor: pointer;
+		font-size: 12px;
+		width: 100px;
+		margin: 0 auto;
+		text-align: center;
+		position: absolute;
+		right: 0;
+		left: 0;
+	}
+	.job-banner {
+		background: url(../img/Mask-Group-3.png);
+		height: 150px;
+		width: 100%;
+		color: #fff;
+		overflow: hidden;
+		position: relative;
+		z-index: 0;
+		margin-bottom:20px;
+	}
+
+	.section-title h2 {
+		font-family: Montserrat;
+		font-weight: 600;
+		font-size: 22px;
+	}
+
+	.companies-detail h3 {
+		font-size: 14px;
+		font-weight: 600;
+		margin-bottom: 10px;
+	}
+
+
+	.single-apps.box-shadow {
+		float: left;
+		text-align: center;
+		border-radius: 5px;
+		margin-right: 6px;
+		padding: 15px 7px;
+		width: 87px;
+	}
+
+	.single-widget--menu {
+		width: 50%;
+		float: left;
+		padding-top: 10px;
+	}
+
+	.copy-p p {
+		color: #fff;
+		font-size: 10px;
+		line-height: 40px;
+		text-align: center;
+	}
+
+	.powerby {
+		text-align: center;
+	}
+
+	.search-areas input {
+		line-height: 40px;
+		border: 0px;
+		padding-left: 10px;
+		margin: 0 10px;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+
+	#new-allerts { 
+		height: auto; 
+	}
+
+	.bp {
+		padding: 30px 0;
+	}
+	.pt {
+		padding: 30px;
+	}
+	.pb {
+		padding: 30px;
+	}
+
+	.single-apps.box-shadow p {
+		line-height: 0px;
+		font-weight: 500;
+		font-size: 12px;
+	}
+	.search-areas input { 
+		width: 90%; 
+	}
+	.here-icon {
+		width: 40px;
+		float: unset;
+		border: 2px solid #e7eaec;
+		height: 40px;
+		text-align: center;
+		line-height: 40px;
+		color: #12649c;
+		margin: 0 auto;
+	}
+	.icon-detail {
+		width: 100%;
+		float: unset;
+		padding-left: 0;
+		margin: 0 auto;
+		text-align: center;
+		margin-top: 19px;
+	}
+	.login-area {
+		padding-top: 20px;
+		display: inline-block;
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.logo-here h2 {
+	    font-size: 15px;
+	    font-weight: 700;
+	    line-height: 52px;
+	    width: 110%;
+	    margin-top: -17px;
+	    margin-right: -5px;
+	}
+
+	.fullinputs {
+		width: 50%; 
+	}
+
+	.single-job {
+		width: 100%;
+		float: left;
+	}
+
+	.job-name {
+		width: 82%;
+		float: right;
+	}
+	.job-name h3 {
+		font-size: 15px; 
+	}
+
+	.view-details {
+		width: 55%;
+		float: right;
+	}
+
+
+	.details-list { 
+		width: 100% !Important;
+		margin-bottom: 30px;
+
+	}
+
+
+	.col-xl-5.mypaddings {
+		padding-left: 10px;
+	}
+	.navbar {
+	    padding: 10px 16px;
+	    background: #2e6abf;
+	    z-index: 1000;
+	}
+	.navbar-nav .nav-link {
+	    margin: 5px;
+	    padding: 0px;
+	    text-align: center;
+	}
+	.bs-wizard>.bs-wizard-step {
+		padding: 0;
+		position: relative;
+		width: 30%;
+		float: left;
+	}
+	.social-link {
+	    line-height: 70px;
+	    text-align: center;
+	}
+} 
+
+/* Extra Small Devices, Phones */ 
+@media (max-width : 479px) {
+	.navbar-toggler {
+		margin-top: 10px;
+	}
+	.navbar-brand {
+		margin-top: 10px;
+	}
+	.icon-detail p {
+		color: #757575;
+		font-size: 10px;
+		line-height: 10px;
+		margin-top: 22px!important;
+	}
+	.login-dropdown-menu, .signup-dropdown-menu {
+		margin-left: -140px;
+	}
+	.navbar {
+		padding: 0px 16px;
+	}
+	.navbar-nav .nav-link {
+		margin: 5px;
+		padding: 0px;
+		text-align: center;
+	}
+	.left-side {
+		width: 50%;
+		float: left;
+		padding-top: 8px;
+	}
+
+	.address-box {
+		width: 100%;
+		float: left;
+		padding-top: 22px;
+		display: ;
+	}
+
+	.logo-here {
+		width: 170px;
+		margin: 0 auto;
+		margin-top: -5px;
+	}
+
+
+	#menu {
+		display: none;
+	}
+	.hero-banner-box h2 {
+		line-height: 30px;
+		font-size: 18px;
+	}
+
+	.hero-banner-box h1 {
+		font-size: 22px;
+		padding-top: 5px;
+	}
+	.search-area input {
+		margin: 0 0;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.search-area {
+		padding: 30px 0;
+	}
+
+	.company-logo {
+		width: 40px;
+		float: unset;
+		margin: 0 auto;
+		margin-bottom: 20px;
+	}
+
+	.job-details {
+		width: 100%;
+		float: right;
+	}
+	.job-details h2 {
+		width: 100%;
+		font-size: 16px;
+		font-weight: 600;
+	}
+
+	.catagory-list-area {
+		width: 100%;
+		float: left;
+		padding: 0 20px;
+	}
+
+	.single-catagory-list li a {
+		font-size: 12px;
+	}
+
+	.skill-img {
+		margin-bottom: 30px;
+	}
+
+	.skills .catagory-list-area {
+		width: 100%;
+		float: left;
+		padding: 0 10px;
+	}
+
+	.job-banner h2 {
+		font-weight: 600;
+		padding: 0;
+		font-size: 20px;
+		text-align: center;
+		padding-top: 20px;
+	}
+
+	.job-banner p {
+		padding-left: 0;
+		text-align: center;
+		padding:3px 0;
+	}
+
+	.btn-applys {
+		background: #fff;
+		border: 0px;
+		border-radius: 5px;
+		line-height: 35px;
+		padding: 0 10px;
+		float: unset;
+		color: #1b75b4;
+		font-weight: 600;
+		margin-right: 0;
+		cursor: pointer;
+		font-size: 12px;
+		width: 100px;
+		margin: 0 auto;
+		text-align: center;
+		position: absolute;
+		right: 0;
+		left: 0;
+	}
+	.job-banner {
+		background: url(../img/Mask-Group-3.png);
+		height: 150px;
+		width: 100%;
+		color: #fff;
+		overflow: hidden;
+		position: relative;
+		z-index: 0;
+		margin-bottom:20px;
+	}
+
+	.section-title h2 {
+		font-family: Montserrat;
+		font-weight: 600;
+		font-size: 22px;
+	}
+
+	.companies-detail h3 {
+		font-size: 14px;
+		font-weight: 600;
+		margin-bottom: 10px;
+	}
+
+
+	.single-apps.box-shadow {
+
+		float: left;
+		text-align: center;
+		border-radius: 5px;
+		margin-right: 6px;
+		padding: 0 7px;
+		width: 70px;
+
+	}
+
+	.single-widget--menu {
+		width: 100%;
+		float: left;
+		padding-top: 10px;
+	}
+
+	.copy-p p {
+		color: #fff;
+		font-size: 10px;
+		line-height: 40px;
+		text-align: center;
+	}
+
+	.powerby {
+		text-align: center;
+	}
+
+	.search-areas input {
+		line-height: 40px;
+		border: 0px;
+		padding-left: 10px;
+		margin: 0 10px;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+
+	#new-allerts { 
+		height: auto; 
+	}
+
+	.bp {
+		padding: 30px 0;
+	}
+
+	.pt {
+		padding: 30px 0; 
+	}
+
+	.pb {
+		padding: 30px 0;
+	}
+
+
+	.single-apps.box-shadow p {
+		line-height: 0px;
+		font-weight: 500;
+		font-size: 10px;
+	}
+	.search-areas input { 
+		width: 90%; 
+	}
+	.here-icon {
+		width: 40px;
+		float: unset;
+		border: 2px solid #e7eaec;
+		height: 40px;
+		text-align: center;
+		line-height: 40px;
+		color: #12649c;
+		margin: 0 auto;
+	}
+	.icon-detail {
+		width: 100%;
+		float: unset;
+		padding-left: 0;
+		margin: 0 auto;
+		text-align: center;
+		margin-top: 19px;
+	}
+	.login-area {
+		padding-top: 20px;
+		display: inline-block;
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.logo-here h2 {
+		font-size: 13px;
+		font-weight: 700;
+		line-height: 52px;
+	}
+	.icon-detail h3 {
+		font-size: 10px;
+		line-height: 10px;
+	}
+
+	.fullinputs {
+		width: 50%; 
+	}
+
+	.single-job {
+		width: 100%;
+		float: left;
+	}
+
+	.job-name {
+		width: 82%;
+		float: right;
+	}
+	.job-name h3 {
+		font-size: 15px; 
+	}
+
+	.view-details {
+		width: 55%;
+		float: right;
+	}
+
+
+	.details-list { 
+		width: 100% !Important;
+		margin-bottom: 30px;
+
+	}
+
+	.col-xl-5.mypaddings {
+		padding-left: 10px;
+	}
+	.job-title-here.myaddress .job-name {
+		width: 80%;
+		float: right;
+	}
+	.row {
+
+		margin: 0;
+	}
+	.social-link {
+	    line-height: 70px;
+	    text-align: center;
+	}
+	.owl-carousel .owl-dots.disabled, .owl-carousel .owl-nav.disabled {
+		display: block;
+	}
+}
+
+
+@media (min-width: 576px){
+	.modal-dialog {
+		max-width: 560px;
+		margin: 1.75rem auto;
+	}
+}
